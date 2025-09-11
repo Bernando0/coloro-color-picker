@@ -25,7 +25,8 @@ pipeline {
     stage('Build image') {
       steps {
         sh '''
-          docker stop "$IMAGE"
+          docker stop $APP_NAME || true
+          docker rm $APP_NAME || true
           docker build -t "$IMAGE" .
           docker image ls | head -n 5
         '''
