@@ -25,7 +25,7 @@ pipeline {
     stage('Build image') {
       steps {
         sh '''
-          docker stop "$IMAGE" .
+          docker stop "$IMAGE"
           docker build -t "$IMAGE" .
           docker image ls | head -n 5
         '''
