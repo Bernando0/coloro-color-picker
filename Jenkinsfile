@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     APP_NAME = 'coloro-color-picker'
-    IMAGE    = "${APP_NAME}:${env.BUILD_NUMBER}"
+    IMAGE    = "${APP_NAME}"
     DOCKER_BUILDKIT = '1'
   }
 
@@ -25,7 +25,7 @@ pipeline {
     stage('Build image') {
       steps {
         sh '''
-          docker build --pull -t "$IMAGE" .
+          docker build -t "$IMAGE" .
           docker image ls | head -n 5
         '''
       }
@@ -34,21 +34,8 @@ pipeline {
     stage('Deploy (compose up)') {
       steps {
         sh '''
-          cat > docker-compose.yml <<'YAML'
-          version: "3.9"
-          services:
-            frontend:
-              image: ${IMAGE}
-              container_name: ${APP_NAME}
-              restart: unless-stopped
-              env_file: .env
-              ports:
-                - "3000:3000"
-          YAML
+           docker run -p 3000:3000 coloro-color-picker -d
 
-          docker compose down || true
-          docker compose up -d
-          docker ps --filter "name=${APP_NAME}"
         '''
       }
     }
