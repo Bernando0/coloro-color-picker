@@ -1,0 +1,19 @@
+{
+  "app.title": "Rabusta Color Picker",
+  "app.description": "Pick a color from image: click to get HEX/RGB/HSL. Free, fast, private.",
+  "upload.hint": "Drag & drop an image, click to choose a file or paste (Ctrl/Cmd+V)",
+  "section.image": "Image",
+  "section.ad": "Advertisement",
+  "color.current": "Current color",
+  "color.source": "Source",
+  "color.source.hover": "under cursor",
+  "color.source.picked": "picked",
+  "color.hex": "HEX",
+  "color.rgb": "RGB",
+  "color.hsl": "HSL",
+  "mode.title": "Mode",
+  "mode.none": "no image",
+  "mode.select": "color selection",
+  "mode.fixed": "fixed (click to reselect)",
+  "btn.copy": "Copy"
+}
