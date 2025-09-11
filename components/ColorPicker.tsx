@@ -1,6 +1,6 @@
 'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { rgbToHex, rgbToHsl, type RGB, type HSL } from '@/lib/color'
+import { rgbToHex, rgbToHsl, type RGB } from '@/lib/color' // убрали неиспользуемый HSL
 import { useTranslation } from 'react-i18next'
 
 export default function ColorPicker(){
@@ -32,6 +32,14 @@ export default function ColorPicker(){
     imgEl.src = src
   }, [imgEl])
 
+  const onFile = useCallback((f?: File) => {
+    const file = f ?? fileInput.current?.files?.[0]
+    if(!file) return
+    const reader = new FileReader()
+    reader.onload = () => drawImage(String(reader.result))
+    reader.readAsDataURL(file)
+  }, [drawImage]) // <-- теперь стабилен и можно добавить в зависимости
+
   const getPointRGB = (e: React.MouseEvent<HTMLCanvasElement>): RGB => {
     const c = canvasRef.current!
     const rect = c.getBoundingClientRect()
@@ -59,13 +67,6 @@ export default function ColorPicker(){
   },[selecting, loaded])
 
   const openFile = () => fileInput.current?.click()
-  const onFile = (f?: File) => {
-    const file = f ?? fileInput.current?.files?.[0]
-    if(!file) return
-    const reader = new FileReader()
-    reader.onload = () => drawImage(String(reader.result))
-    reader.readAsDataURL(file)
-  }
 
   const onPaste = useCallback((e: ClipboardEvent)=>{
     const items = e.clipboardData?.items
@@ -73,7 +74,7 @@ export default function ColorPicker(){
     for(const it of items){
       if(it.type.startsWith('image/')){ onFile(it.getAsFile()!); break }
     }
-  },[])
+  },[onFile]) // <-- добавили зависимость
 
   useEffect(()=>{
     window.addEventListener('paste', onPaste)

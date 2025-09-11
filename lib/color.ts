@@ -16,10 +16,11 @@ export function rgbToHex({r,g,b}:RGB){
   return `#${to(r)}${to(g)}${to(b)}`.toUpperCase()
 }
 
-export function rgbToHsl({r,g,b}:RGB): HSL {
+export function rgbToHsl({r,g,b}: RGB): HSL {
   r/=255; g/=255; b/=255
   const max=Math.max(r,g,b), min=Math.min(r,g,b)
-  let h=0,s=0,l=(max+min)/2
+  let h=0, s=0
+  const l=(max+min)/2 // <-- было let l=..., теперь const
   const d=max-min
   if(d!==0){
     s=l>0.5? d/(2-max-min): d/(max+min)
@@ -32,6 +33,7 @@ export function rgbToHsl({r,g,b}:RGB): HSL {
   }
   return { h: Math.round(h*360), s: Math.round(s*100), l: Math.round(l*100) }
 }
+
 
 export function hslToRgb({h,s,l}:HSL): RGB {
   h/=360; s/=100; l/=100

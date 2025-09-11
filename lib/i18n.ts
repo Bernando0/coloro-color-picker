@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next'
 
 const resources = {
   en: { t: {
-    appTitle: 'Rabusta Color Picker', mvp: 'MVP', image: 'Image', ads: 'Ads',
+    appTitle: 'Coloro', mvp: 'MVP', image: 'Image', ads: 'Ads',
     dropHint: 'Drag & drop an image, click to select a file, or paste from clipboard (Ctrl/Cmd+V)',
     currentColor: 'Current color', mode: 'Mode',
     mode_none: 'no image', mode_pick: 'pick color', mode_locked: 'locked (click to pick again)',
@@ -13,7 +13,7 @@ const resources = {
     tip: 'Tip: everything runs in your browser. No uploads.'
   }},
   ru: { t: {
-    appTitle: 'Rabusta Color Picker', mvp: 'MVP', image: 'Изображение', ads: 'Реклама',
+    appTitle: 'Coloro', mvp: 'MVP', image: 'Изображение', ads: 'Реклама',
     dropHint: 'Перетащите изображение, кликните чтобы выбрать файл или вставьте из буфера (Ctrl/Cmd+V)',
     currentColor: 'Текущий цвет', mode: 'Режим',
     mode_none: 'нет изображения', mode_pick: 'выбор цвета', mode_locked: 'зафиксировано (клик — снова выбрать)',
@@ -22,7 +22,7 @@ const resources = {
     tip: 'Совет: всё считается в браузере. Файлы не отправляются.'
   }},
   es: { t: {
-    appTitle: 'Rabusta Color Picker', mvp: 'MVP', image: 'Imagen', ads: 'Anuncios',
+    appTitle: 'Coloro', mvp: 'MVP', image: 'Imagen', ads: 'Anuncios',
     dropHint: 'Arrastra y suelta una imagen, haz clic para elegir archivo o pega desde el portapapeles (Ctrl/Cmd+V)',
     currentColor: 'Color actual', mode: 'Modo',
     mode_none: 'sin imagen', mode_pick: 'seleccionar color', mode_locked: 'bloqueado (clic para seleccionar de nuevo)',
@@ -31,7 +31,7 @@ const resources = {
     tip: 'Consejo: todo se ejecuta en tu navegador. Sin cargas.'
   }},
   zh: { t: {
-    appTitle: 'Rabusta 取色器', mvp: 'MVP', image: '图片', ads: '广告',
+    appTitle: 'Coloro', mvp: 'MVP', image: '图片', ads: '广告',
     dropHint: '拖拽图片、点击选择文件或从剪贴板粘贴（Ctrl/Cmd+V）',
     currentColor: '当前颜色', mode: '模式',
     mode_none: '无图片', mode_pick: '取色', mode_locked: '已锁定（点击重新取色）',
@@ -40,7 +40,7 @@ const resources = {
     tip: '提示：一切在浏览器中完成，不会上传文件。'
   }},
   hi: { t: {
-    appTitle: 'Rabusta Color Picker', mvp: 'MVP', image: 'छवि', ads: 'विज्ञापन',
+    appTitle: 'Coloro', mvp: 'MVP', image: 'छवि', ads: 'विज्ञापन',
     dropHint: 'छवि खींचें-छोड़ें, फ़ाइल चुनने के लिए क्लिक करें या क्लिपबोर्ड से पेस्ट करें (Ctrl/Cmd+V)',
     currentColor: 'वर्तमान रंग', mode: 'मोड',
     mode_none: 'कोई छवि नहीं', mode_pick: 'रंग चुनें', mode_locked: 'लॉक (दोबारा चुनने के लिए क्लिक करें)',
@@ -50,7 +50,6 @@ const resources = {
   }}
 }
 
-// Инициализируем один раз при импорте модуля
 if (!i18n.isInitialized) {
   i18n.use(initReactI18next).init({
     resources,
@@ -64,11 +63,8 @@ if (!i18n.isInitialized) {
 
 export function setLanguage(lang: 'en'|'ru'|'es'|'zh'|'hi'){
   if (i18n.language !== lang) {
-    // менять язык только из эффектов/обработчиков, не во время рендера
     void i18n.changeLanguage(lang)
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = lang
-    }
+    if (typeof document !== 'undefined') document.documentElement.lang = lang
   }
 }
 
