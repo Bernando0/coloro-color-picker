@@ -36,7 +36,7 @@ pipeline {
     stage('Deploy (compose up)') {
       steps {
         sh '''
-           docker run -d -p 3002:3002 coloro-color-picker
+           docker run -d -p 3002:3000 coloro-color-picker
 
         '''
       }
