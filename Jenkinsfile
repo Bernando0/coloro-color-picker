@@ -54,9 +54,9 @@ pipeline {
     }
   }
 
-  post {
-    always {
-      sh 'docker image prune -f || true'
-    }
-  }
+//   post {
+//     always {
+//       sh 'docker image prune -f || true'
+//     }
+//   }
 }
