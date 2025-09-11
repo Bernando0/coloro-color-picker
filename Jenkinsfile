@@ -5,7 +5,6 @@ pipeline {
     IMAGE    = "${APP_NAME}:${env.BUILD_NUMBER}"
     DOCKER_BUILDKIT = '1'
   }
-  options { timestamps(); ansiColor('xterm') }
 
   stages {
     stage('Checkout') {
