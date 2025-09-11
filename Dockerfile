@@ -32,10 +32,10 @@ COPY --from=builder /app/node_modules ./node_modules
 
 # Устанавливаем переменные окружения
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=3001
 
 # Пробрасываем порт
-EXPOSE 3000
+EXPOSE 3001
 
 # Запускаем Next.js
 CMD ["npm", "run", "start"]
