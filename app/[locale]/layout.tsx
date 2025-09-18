@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '../globals.css'
+import Script from "next/script";
 
 const supportedLocales = ['ru','en','es','zh','hi'] as const
 type Locale = typeof supportedLocales[number]
@@ -72,6 +73,13 @@ export default async function LocaleLayout(
       <body>
         <div className="container">{children}</div>
       </body>
+       <Script
+          id="adsense-loader"
+          strategy="afterInteractive"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5231584266973170"
+          crossOrigin="anonymous"
+        />
     </html>
   )
 }

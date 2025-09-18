@@ -19,7 +19,7 @@ const resources = {
     mode_none: 'нет изображения', mode_pick: 'выбор цвета', mode_locked: 'зафиксировано (клик — снова выбрать)',
     source: 'Источник', src_selected: 'выбран', src_hover: 'под курсором',
     hex: 'HEX', rgb: 'RGB', hsl: 'HSL', copy: 'Копировать',
-    tip: 'Совет: всё считается в браузере. Файлы не отправляются.'
+    tip: ''
   }},
   es: { t: {
     appTitle: 'Coloro', mvp: 'MVP', image: 'Imagen', ads: 'Anuncios',
@@ -28,7 +28,7 @@ const resources = {
     mode_none: 'sin imagen', mode_pick: 'seleccionar color', mode_locked: 'bloqueado (clic para seleccionar de nuevo)',
     source: 'Fuente', src_selected: 'elegido', src_hover: 'bajo el cursor',
     hex: 'HEX', rgb: 'RGB', hsl: 'HSL', copy: 'Copiar',
-    tip: 'Consejo: todo se ejecuta en tu navegador. Sin cargas.'
+    tip: ''
   }},
   zh: { t: {
     appTitle: 'Coloro', mvp: 'MVP', image: '图片', ads: '广告',
@@ -37,7 +37,7 @@ const resources = {
     mode_none: '无图片', mode_pick: '取色', mode_locked: '已锁定（点击重新取色）',
     source: '来源', src_selected: '已选', src_hover: '光标下',
     hex: 'HEX', rgb: 'RGB', hsl: 'HSL', copy: '复制',
-    tip: '提示：一切在浏览器中完成，不会上传文件。'
+    tip: ''
   }},
   hi: { t: {
     appTitle: 'Coloro', mvp: 'MVP', image: 'छवि', ads: 'विज्ञापन',
@@ -46,7 +46,7 @@ const resources = {
     mode_none: 'कोई छवि नहीं', mode_pick: 'रंग चुनें', mode_locked: 'लॉक (दोबारा चुनने के लिए क्लिक करें)',
     source: 'स्रोत', src_selected: 'चुना हुआ', src_hover: 'कर्सर के नीचे',
     hex: 'HEX', rgb: 'RGB', hsl: 'HSL', copy: 'कॉपी',
-    tip: 'टिप: सब कुछ ब्राउज़र में चलता है। अपलोड नहीं।'
+    tip: ''
   }}
 }
 
