@@ -1,0 +1,50 @@
+pipeline {
+  agent any
+  environment {
+    APP_NAME = 'coloro-color-picker'
+    IMAGE    = "${APP_NAME}"
+    DOCKER_BUILDKIT = '1'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+
+//     stage('Inject .env') {
+//       steps {
+//         withCredentials([file(credentialsId: 'nextjs_env_file', variable: 'DOTENV_FILE')]) {
+//           sh '''
+//             cp "$DOTENV_FILE" .env
+//             chmod 600 .env
+//           '''
+//         }
+//       }
+//     }
+
+    stage('Build image') {
+      steps {
+        sh '''
+          docker stop $APP_NAME || true
+          docker rm $APP_NAME || true
+          docker build -t "$IMAGE" .
+          docker image ls | head -n 5
+        '''
+      }
+    }
+
+    stage('Deploy (compose up)') {
+      steps {
+        sh '''
+           docker run -d -p 3002:3000 --name coloro-color-picker coloro-color-picker:latest
+        '''
+      }
+    }
+  }
+
+//   post {
+//     always {
+//       sh 'docker image prune -f || true'
+//     }
+//   }
+}
